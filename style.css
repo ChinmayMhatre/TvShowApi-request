@@ -1,0 +1,22 @@
+.main{
+    margin-top: 10vh;
+}
+
+#header{
+    text-align: center;
+}
+
+.search-bar-wrapper{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shows{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
