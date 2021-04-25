@@ -8,7 +8,7 @@ searchForm.addEventListener("submit",async (e)=>{
     if(input.value != ""){
         try {
             let result = await axios.get(`http://api.tvmaze.com/search/shows?q=${input.value}`)
-            makeImages(result.data)
+            createImages(result.data)
             console.log(result);
         }
         catch (error) {
@@ -17,12 +17,13 @@ searchForm.addEventListener("submit",async (e)=>{
     }
 })
 
-const makeImages = (shows)=>{
+const createImages = (shows)=>{
     for(show of shows){
         if (show.show.image) {
-            let img1 = document.createElement('img')
-            img1.src = show.show.image.medium
-            showdiv.append(img1)
+            let image = document.createElement('img')
+            image.src = show.show.image.medium
+            showdiv.append(image)
         }
     };
 }
+
