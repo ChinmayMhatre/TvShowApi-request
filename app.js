@@ -3,13 +3,13 @@ let showdiv = document.querySelector('.shows')
 let searchForm = document.querySelector('.search-form')
 
 
-searchForm.addEventListener("submit",async (e)=>{
-    e.preventDefault();
-    if(input.value != ""){
+searchForm.addEventListener("submit",async (e)=>{ //e is a event object 
+    e.preventDefault(); //Prevents form from refreshing the page.
+    if(input.value != ""){ // Checking if the input is empty.
         try {
             let result = await axios.get(`http://api.tvmaze.com/search/shows?q=${input.value}`)
-            createImages(result.data)
-            console.log(result);
+            createImages(result.data)//result.data is an array
+            console.log(result); // You can look at the result from the api in the console
         }
         catch (error) {
             console.log(error);
@@ -17,12 +17,12 @@ searchForm.addEventListener("submit",async (e)=>{
     }
 })
 
-const createImages = (shows)=>{
-    for(show of shows){
-        if (show.show.image) {
+const createImages = (shows)=>{//shows is an array
+    for(show of shows){ 
+        if (show.show.image) { // checking if there is an image for the current show
             let image = document.createElement('img')
-            image.src = show.show.image.medium
-            showdiv.append(image)
+            image.src = show.show.image.medium // show.show.image.medium contains the url of the image
+            showdiv.append(image) //we attach the images to an empty div that we created in html
         }
     };
 }
